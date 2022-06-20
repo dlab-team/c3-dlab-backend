@@ -9,3 +9,8 @@
 ```bash
 docker-compose run --rm --service-ports app
 ```
+
+# Notas
+
+Como escribir un mensaje de commit:
+https://cbea.ms/git-commit/
