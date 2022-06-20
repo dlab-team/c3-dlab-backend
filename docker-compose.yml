@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    command: bash -c "npm run start"
+    environment:
+      EXAMPLE: 'EXAMPLE_ENV_KEY'
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
