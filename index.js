@@ -1,24 +1,36 @@
-require('dotenv').config()
-const express = require('express')
+require("dotenv").config();
+const express = require("express");
 
-const app = express()
-const { Client } = require('pg')
+const sequelize = require("./src/database/database");
+//const Sequelize = require("sequelize");
 
-app.get('/', async (req, res) => {
-  const client = new Client({
-    user: process.env.POSTGRES_USER,
+const app = express();
+
+/* const sequelize = new Sequelize(
+  process.env.POSTGRES_USER,
+  process.env.POSTGRES_PASSWORD,
+  process.env.POSTGRES_DB,
+  {
     host: process.env.POSTGRES_HOST,
-    password: process.env.POSTGRES_PASSWORD,
-    name: process.env.POSTGRES_DB
-  })
-  await client.connect()
-  const resp = await client.query('SELECT $1::text AS message', ['Pg connection working!'])
-  console.log(resp.rows[0].message) // Hello world!
-  await client.end()
+    dialect: "postgres",
+  }
+); */
 
-  res.json({ message: 'Hello World' })
-})
+async function connectDb() {
+  try {
+    await sequelize.authenticate();
+    console.log("Connection to db has been established successfully.");
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+}
+
+app.get("/", async (req, res) => {
+  res.json({ message: "Hello World" });
+});
 
 app.listen(process.env.APP_PORT, () => {
-  console.log(`App running on port: ${process.env.APP_PORT}`)
-})
+  console.log(`App running on port: ${process.env.APP_PORT}`);
+});
+
+connectDb();
