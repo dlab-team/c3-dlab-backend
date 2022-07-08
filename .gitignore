@@ -14,3 +14,7 @@ coverage
 
 # Secrets
 .env
+
+#  docker files & misc tmp stuff
+tmp
+
