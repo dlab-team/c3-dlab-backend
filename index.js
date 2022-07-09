@@ -1,9 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 
-const sequelize = require("./src/database/database");
-
-//const { sequelize } = require("./src/models/index");
+const { sequelize } = require("./src/models/index");
 
 const userRoutes = require("./src/routes/userRoutes");
 
@@ -11,8 +9,8 @@ const app = express();
 
 async function connectDb() {
   try {
-    //await sequelize.authenticate();
-    await sequelize.sync({ force: true });
+    await sequelize.authenticate();
+    //await sequelize.sync({ force: true });
     console.log("Connection to db has been established successfully.");
   } catch (error) {
     console.error("Unable to connect to the database:", error);

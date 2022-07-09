@@ -29,20 +29,20 @@ module.exports = {
       country: {
         type: Sequelize.STRING,
       },
-      genre: {
+      gender: {
         type: Sequelize.STRING,
       },
       jobStatus: {
         type: Sequelize.STRING,
       },
-      /* createdAt: {
+      createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      } */
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
