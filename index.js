@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const cookieSession = require("cookie-session");
 
 const { sequelize } = require("./src/models/index");
 
@@ -19,7 +20,13 @@ async function connectDb() {
 
 app.use(express.json());
 
-app.use("/api", userRoutes);
+app.use(
+  cookieSession({
+    signed: false,
+  })
+);
+
+app.use("/api/1", userRoutes);
 app.get("/", async (req, res) => {
   res.json({ message: "Hello World" });
 });
