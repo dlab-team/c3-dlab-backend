@@ -10,7 +10,7 @@ const validator = (req, res, next) => {
       .messages({ "string.empty": "An email must be provided" }),
     password: joi.string().trim().required().min(8).messages({
       "string.empty": "A password must be provided",
-      "string.min": "The password must be at least 8 characters long",
+      "string.min": "The password must contain at least 8 characters.",
     }),
   });
   const validation = schema.validate(req.body, { abortEarly: false });
