@@ -27,9 +27,6 @@ app.use(
 );
 
 app.use("/api/1", userRoutes);
-app.get("/", async (req, res) => {
-  res.json({ message: "Hello World" });
-});
 
 app.listen(process.env.APP_PORT, () => {
   console.log(`App running on port: ${process.env.APP_PORT}`);
