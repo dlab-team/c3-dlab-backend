@@ -8,26 +8,33 @@ const userControllers = {
     const { email, password } = req.body;
 
     const hashedPassword = bcrypt.hashSync(password, 10);
-    const user = await User.create(
-      {
-        email,
-        password: hashedPassword,
-      },
-      { fields: ["email", "password"] }
-    );
-    const userJwt = jwt.sign(
-      {
-        id: user.id,
-        email: user.email,
-      },
-      process.env.JWT_KEY
-    );
 
-    // Guarda jwt en cookie
-    req.session.jwt = userJwt;
-    res
-      .status(201)
-      .json({ succes: true, res: { email: user.email, id: user.id } });
+    const repeatedUser = await User.findOne({ where: { email: email } });
+
+    if (!repeatedUser) {
+      const user = await User.create(
+        {
+          email,
+          password: hashedPassword,
+        },
+        { fields: ["email", "password"] }
+      );
+      const userJwt = jwt.sign(
+        {
+          id: user.id,
+          email: user.email,
+        },
+        process.env.JWT_KEY
+      );
+
+      // Guarda jwt en cookie
+      req.session.jwt = userJwt;
+      res
+        .status(201)
+        .json({ succes: true, res: { email: user.email, id: user.id } });
+    } else {
+      res.status(400).json({ succes: false, message: "email alrady in use" });
+    }
   },
   signIn: async (req, res) => {
     const { email, password } = req.body;
@@ -59,7 +66,9 @@ const userControllers = {
         res: { email: existingUser.email, id: existingUser.id },
       });
     } else {
-      res.json({ succes: false, message: "Wrong password provided." });
+      res
+        .status(400)
+        .json({ succes: false, message: "Wrong password provided." });
     }
   },
   currentUser: async (req, res) => {
