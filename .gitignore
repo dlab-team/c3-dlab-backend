@@ -14,3 +14,6 @@ coverage
 
 # Secrets
 .env
+
+# tmp files
+tmp
