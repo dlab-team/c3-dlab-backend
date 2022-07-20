@@ -62,7 +62,7 @@ const userControllers = {
       // Guarda jwt en cookie
       req.session.jwt = userJwt;
       res.status(200).json({
-        succes: true,
+        success: true,
         res: { email: existingUser.email, id: existingUser.id },
       });
     } else {
