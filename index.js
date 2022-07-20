@@ -1,24 +1,59 @@
-require('dotenv').config()
-const express = require('express')
+require("dotenv").config();
+const express = require("express");
+const cookieSession = require("cookie-session");
+const path = require("path");
+const swaggerUi = require("swagger-ui-express");
+const swaggerJSDoc = require("swagger-jsdoc");
 
-const app = express()
-const { Client } = require('pg')
+const { sequelize } = require("./src/models/index");
 
-app.get('/', async (req, res) => {
-  const client = new Client({
-    user: process.env.POSTGRES_USER,
-    host: process.env.POSTGRES_HOST,
-    password: process.env.POSTGRES_PASSWORD,
-    name: process.env.POSTGRES_DB
+const userRoutes = require("./src/routes/userRoutes");
+
+const app = express();
+
+const swaggerSpec = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "dlab-c3 API",
+      version: "1.0.0",
+    },
+    servers: [
+      {
+        url: "http://localhost:8080",
+      },
+    ],
+  },
+  apis: [`${path.join(__dirname, "./src/routes/*.js")}`],
+};
+
+async function connectDb() {
+  try {
+    await sequelize.authenticate();
+    //await sequelize.sync({ force: true });
+    console.log("Connection to db has been established successfully.");
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+}
+
+app.use(express.json());
+
+app.use(
+  cookieSession({
+    signed: false,
   })
-  await client.connect()
-  const resp = await client.query('SELECT $1::text AS message', ['Pg connection working!'])
-  console.log(resp.rows[0].message) // Hello world!
-  await client.end()
+);
 
-  res.json({ message: 'Hello World' })
-})
+app.use("/api/1", userRoutes);
+app.use(
+  "/api/1/documentation",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerJSDoc(swaggerSpec))
+);
 
 app.listen(process.env.APP_PORT, () => {
-  console.log(`App running on port: ${process.env.APP_PORT}`)
-})
+  console.log(`App running on port: ${process.env.APP_PORT}`);
+});
+
+connectDb();
