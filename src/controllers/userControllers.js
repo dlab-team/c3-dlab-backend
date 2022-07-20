@@ -31,7 +31,7 @@ const userControllers = {
       req.session.jwt = userJwt;
       res
         .status(201)
-        .json({ succes: true, res: { email: user.email, id: user.id } });
+        .json({ success: true, res: { email: user.email, id: user.id } });
     } else {
       res.status(400).json({ succes: false, message: "email alrady in use" });
     }
