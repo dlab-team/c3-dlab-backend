@@ -68,7 +68,7 @@ const userControllers = {
     } else {
       res
         .status(400)
-        .json({ succes: false, message: "Wrong password provided." });
+        .json({ success: false, message: "Wrong password provided." });
     }
   },
   currentUser: async (req, res) => {
