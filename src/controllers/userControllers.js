@@ -33,7 +33,7 @@ const userControllers = {
         .status(201)
         .json({ success: true, res: { email: user.email, id: user.id } });
     } else {
-      res.status(400).json({ succes: false, message: "email alrady in use" });
+      res.status(400).json({ succes: false, message: "email already in use" });
     }
   },
   signIn: async (req, res) => {
