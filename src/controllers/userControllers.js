@@ -43,7 +43,7 @@ const userControllers = {
     });
 
     if (!existingUser) {
-      res.status(401).json({ succes: false, message: "User was not founded" });
+      res.status(404).json({ success: false, message: "User was not found" });
     }
     const passwordMatch = await bcrypt.compareSync(
       password,
