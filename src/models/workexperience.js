@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      WorkExperience.hasOne(models.User, {
+      WorkExperience.BelongsTo(models.User, {
         foreignKey: 'userId',
         onDelete: 'CASCADE'
       });
