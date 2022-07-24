@@ -12,10 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       UserSkill.BelongsTo(models.Skill, {
-        foreignKey: 'skillId'
+        foreignKey: 'skillId',
+        onDelete: 'CASCADE'
       });
       UserSkill.BelongsTo(models.User, {
-        foreignKey: 'userId'
+        foreignKey: 'userId',
+        onDelete: 'CASCADE'
       });
     }
   }
