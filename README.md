@@ -11,6 +11,23 @@
 ```bash
 docker-compose run --rm --service-ports app
 ```
+o bien
+```bash
+docker-compose up
+```
+
+# Sobre postgres
+La primera vez que se ejecute, deberán usar 
+```
+docker-compose up
+```
+
+Para que la imagen de postgres genere correctamente las configuraciones en el contenedor de postgres
+despues se puede seguir usando
+```
+docker-compose run --rm --service-ports app
+```
+(o usar siempre ```docker-compose up```, eso es elección de Uds.)
 
 # Notas
 
