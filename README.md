@@ -7,6 +7,7 @@
 # Como ejecutar el proyecto
 
 - Crear un archivo llamado `.env`, y poner en el los contenidos del archivo `.env_example`
+- Ejecutar `npm install`
 
 ```bash
 docker-compose run --rm --service-ports app

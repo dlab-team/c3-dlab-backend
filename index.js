@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require("express");
 const cookieSession = require("cookie-session");
 const cors = require("cors");
@@ -11,6 +10,11 @@ const { sequelize } = require("./src/models/index");
 const userRoutes = require("./src/routes/userRoutes");
 
 const app = express();
+
+if (process.env.NODE_ENV === 'development') {
+  // we use notenv only for local dev purposes, on heroku we use heroku env variables
+  require('dotenv').config()
+}
 
 app.use(cors());
 
@@ -55,8 +59,10 @@ app.use(
   swaggerUi.setup(swaggerJSDoc(swaggerSpec))
 );
 
-app.listen(process.env.APP_PORT, () => {
-  console.log(`App running on port: ${process.env.APP_PORT}`);
-});
+const port = process.env.APP_PORT || process.env.PORT
+app.listen(port, () => {
+  console.log(`App running on port: ${port}`)
+})
 
 connectDb();
+
