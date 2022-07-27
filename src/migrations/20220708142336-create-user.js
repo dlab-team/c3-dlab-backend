@@ -32,7 +32,7 @@ module.exports = {
       gender: {
         type: Sequelize.STRING,
       },
-      jobStatus: {
+      employmentStatus: {
         type: Sequelize.STRING,
       },
       createdAt: {
