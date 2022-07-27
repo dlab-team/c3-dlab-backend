@@ -42,33 +42,34 @@ const userControllers = {
       where: { email: email },
     });
 
-    if (!existingUser) {
-      res.status(404).json({ success: false, message: "User was not found" });
-    }
-    const passwordMatch = await bcrypt.compareSync(
-      password,
-      existingUser.password
-    );
-
-    if (passwordMatch) {
-      const userJwt = jwt.sign(
-        {
-          id: existingUser.id,
-          email: existingUser.email,
-        },
-        process.env.JWT_KEY
+    if (existingUser) {
+      const passwordMatch = await bcrypt.compareSync(
+        password,
+        existingUser.password
       );
 
-      // Guarda jwt en cookie
-      req.session.jwt = userJwt;
-      res.status(200).json({
-        success: true,
-        res: { email: existingUser.email, id: existingUser.id },
-      });
+      if (passwordMatch) {
+        const userJwt = jwt.sign(
+          {
+            id: existingUser.id,
+            email: existingUser.email,
+          },
+          process.env.JWT_KEY
+        );
+
+        // Guarda jwt en cookie
+        req.session.jwt = userJwt;
+        res.status(200).json({
+          success: true,
+          res: { email: existingUser.email, id: existingUser.id },
+        });
+      } else {
+        res
+          .status(400)
+          .json({ success: false, message: "Wrong password provided." });
+      }
     } else {
-      res
-        .status(400)
-        .json({ success: false, message: "Wrong password provided." });
+      res.status(404).json({ success: false, message: "User was not found" });
     }
   },
   currentUser: async (req, res) => {
