@@ -35,6 +35,9 @@ module.exports = {
       employmentStatus: {
         type: Sequelize.STRING,
       },
+      idealJob: {
+        type: Sequelize.TEXT,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
