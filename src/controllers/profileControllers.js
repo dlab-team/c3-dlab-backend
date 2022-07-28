@@ -1,4 +1,9 @@
-const { Study, User, WorkExperience } = require("../models");
+const {
+  Study,
+  User,
+  UserProfessionalPosition,
+  WorkExperience,
+} = require("../models");
 
 const profileControllers = {
   addProfile: async (req, res) => {
@@ -21,6 +26,7 @@ const profileControllers = {
       studyInstitution,
       studyInstitutionType,
       studies,
+      positions,
     } = req.body;
     const userExists = await User.findOne({
       where: { id: userId },
@@ -55,6 +61,7 @@ const profileControllers = {
       }); */
 
       const study = await Study.bulkCreate(studies);
+      const userPosition = await UserProfessionalPosition.bulkCreate(positions);
 
       res.json({ user });
     }

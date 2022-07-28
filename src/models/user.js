@@ -5,9 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       User.hasOne(models.WorkExperience, { onDelete: "CASCADE" });
       User.hasMany(models.Study, { onDelete: "CASCADE" });
+      User.hasMany(models.UserProfessionalPosition, { onDelete: "CASCADE" });
       User.belongsTo(models.EducationLevel, {
         foreignKey: "EducationLevelId",
-        as: "education level",
+        as: "Education level",
       });
     }
   }
