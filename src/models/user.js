@@ -3,10 +3,10 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      User.hasOne(models.WorkExperience, { onDelete: "CASCADE" });
-      User.hasMany(models.Study, { onDelete: "CASCADE" });
-      User.hasMany(models.UserProfessionalPosition, { onDelete: "CASCADE" });
-      User.hasMany(models.LanguageLevel, { onDelete: "CASCADE" });
+      User.hasOne(models.WorkExperience);
+      User.hasMany(models.Study);
+      User.hasMany(models.UserProfessionalPosition);
+      User.hasMany(models.LanguageLevel);
       User.hasMany(models.FrameworkLevel);
       User.belongsTo(models.EducationLevel, {
         foreignKey: "EducationLevelId",
@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       country: DataTypes.STRING,
       gender: DataTypes.STRING,
       employmentStatus: DataTypes.STRING,
+      idealJob: DataTypes.TEXT,
     },
     {
       sequelize,
