@@ -1,6 +1,8 @@
 const {
+  FrameworkLevel,
   LanguageLevel,
   Study,
+  ToolLevel,
   User,
   UserProfessionalPosition,
   WorkExperience,
@@ -29,6 +31,8 @@ const profileControllers = {
       studies,
       positions,
       languages,
+      frameworks,
+      tools,
     } = req.body;
     const userExists = await User.findOne({
       where: { id: userId },
@@ -59,13 +63,18 @@ const profileControllers = {
       const study = await Study.bulkCreate(studies);
       const userPosition = await UserProfessionalPosition.bulkCreate(positions);
       await LanguageLevel.bulkCreate(languages);
-      await res.json({ user });
+      await FrameworkLevel.bulkCreate(frameworks);
+      await ToolLevel.bulkCreate(tools);
+      await await res.json({ user });
     }
   },
   getUser: async (req, res) => {
     const { userId } = req.body;
 
-    const user = await User.findAll({ include: { all: true, nested: true } });
+    const user = await User.findAll({
+      where: { id: userId },
+      include: { all: true, nested: true },
+    });
 
     res.json({ user });
   },

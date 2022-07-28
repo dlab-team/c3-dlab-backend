@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Study, { onDelete: "CASCADE" });
       User.hasMany(models.UserProfessionalPosition, { onDelete: "CASCADE" });
       User.hasMany(models.LanguageLevel, { onDelete: "CASCADE" });
+      User.hasMany(models.FrameworkLevel);
       User.belongsTo(models.EducationLevel, {
         foreignKey: "EducationLevelId",
         as: "Education level",
