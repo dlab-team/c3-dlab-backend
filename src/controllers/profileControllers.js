@@ -1,4 +1,5 @@
 const {
+  EducationLevel,
   FrameworkLevel,
   LanguageLevel,
   Study,
@@ -18,6 +19,8 @@ const profileControllers = {
       city,
       country,
       gender,
+      employmentStatus,
+      idealJob,
       urlCv,
       urlLinkedin,
       urlGithub,
@@ -44,7 +47,8 @@ const profileControllers = {
           country: country,
           gender: gender,
           EducationLevelId: educationLevelId,
-          Availabilities: availability,
+          employmentStatus: employmentStatus,
+          idealJob: idealJob,
         },
         { where: { id: userId } }
       );
@@ -54,7 +58,7 @@ const profileControllers = {
         urlLinkedin: urlLinkedin,
         urlGithub: urlGithub,
         urlPortfolio: urlPortfolio,
-        detail: details,
+        details: details,
         yearsExperience: yearsExperience,
       });
 
