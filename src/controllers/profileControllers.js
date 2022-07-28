@@ -25,9 +25,6 @@ const profileControllers = {
       details,
       yearsExperience,
       educationLevelId,
-      studyName,
-      studyInstitution,
-      studyInstitutionType,
       studies,
       positions,
       languages,
@@ -47,10 +44,11 @@ const profileControllers = {
           country: country,
           gender: gender,
           EducationLevelId: educationLevelId,
+          Availabilities: availability,
         },
         { where: { id: userId } }
       );
-      const workExperience = await WorkExperience.create({
+      await WorkExperience.create({
         UserId: userId,
         urlCv: urlCv,
         urlLinkedin: urlLinkedin,
@@ -60,12 +58,13 @@ const profileControllers = {
         yearsExperience: yearsExperience,
       });
 
-      const study = await Study.bulkCreate(studies);
-      const userPosition = await UserProfessionalPosition.bulkCreate(positions);
+      await Study.bulkCreate(studies);
+      await UserProfessionalPosition.bulkCreate(positions);
       await LanguageLevel.bulkCreate(languages);
       await FrameworkLevel.bulkCreate(frameworks);
       await ToolLevel.bulkCreate(tools);
-      await await res.json({ user });
+
+      await res.json({ user });
     }
   },
   getUser: async (req, res) => {
