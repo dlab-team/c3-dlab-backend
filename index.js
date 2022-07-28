@@ -31,7 +31,7 @@ const swaggerSpec = {
       },
     ],
   },
-  apis: [`${path.join(__dirname, "./src/routes/*.js")}`],
+  apis: [`${path.join(__dirname, "./src/swagger/*.js")}`],
 };
 
 async function connectDb() {
@@ -52,9 +52,9 @@ app.use(
   })
 );
 
-app.use("/api/1", userRoutes);
+app.use("/api/v1", userRoutes);
 app.use(
-  "/api/1/documentation",
+  "/api/v1/documentation",
   swaggerUi.serve,
   swaggerUi.setup(swaggerJSDoc(swaggerSpec))
 );
