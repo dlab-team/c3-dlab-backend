@@ -1,4 +1,5 @@
 const {
+  LanguageLevel,
   Study,
   User,
   UserProfessionalPosition,
@@ -27,6 +28,7 @@ const profileControllers = {
       studyInstitutionType,
       studies,
       positions,
+      languages,
     } = req.body;
     const userExists = await User.findOne({
       where: { id: userId },
@@ -53,24 +55,16 @@ const profileControllers = {
         detail: details,
         yearsExperience: yearsExperience,
       });
-      /* const study = await Study.bulkCreate({
-        UserId: userId,
-        name: studyName,
-        insitution: studyInstitution,
-        intitutionType: studyInstitutionType,
-      }); */
 
       const study = await Study.bulkCreate(studies);
       const userPosition = await UserProfessionalPosition.bulkCreate(positions);
-
-      res.json({ user });
+      await LanguageLevel.bulkCreate(languages);
+      await res.json({ user });
     }
   },
   getUser: async (req, res) => {
     const { userId } = req.body;
-    /* const user = await User.findByPk(userId, {
-      include: { all: true, nested: true },
-    }); */
+
     const user = await User.findAll({ include: { all: true, nested: true } });
 
     res.json({ user });
