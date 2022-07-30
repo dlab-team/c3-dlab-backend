@@ -52,9 +52,9 @@ app.use(
   })
 );
 
-app.use("/api/v1", userRoutes);
+app.use("/api/1", userRoutes);
 app.use(
-  "/api/v1/documentation",
+  "/api/1/documentation",
   swaggerUi.serve,
   swaggerUi.setup(swaggerJSDoc(swaggerSpec))
 );
