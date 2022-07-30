@@ -11,9 +11,9 @@ const userRoutes = require("./src/routes/userRoutes");
 
 const app = express();
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   // we use notenv only for local dev purposes, on heroku we use heroku env variables
-  require('dotenv').config()
+  require("dotenv").config();
 }
 
 app.use(cors());
@@ -31,7 +31,7 @@ const swaggerSpec = {
       },
     ],
   },
-  apis: [`${path.join(__dirname, "./src/routes/*.js")}`],
+  apis: [`${path.join(__dirname, "./src/swagger/*.js")}`],
 };
 
 async function connectDb() {
@@ -59,10 +59,9 @@ app.use(
   swaggerUi.setup(swaggerJSDoc(swaggerSpec))
 );
 
-const port = process.env.APP_PORT || process.env.PORT
+const port = process.env.APP_PORT || process.env.PORT;
 app.listen(port, () => {
-  console.log(`App running on port: ${port}`)
-})
+  console.log(`App running on port: ${port}`);
+});
 
 connectDb();
-
