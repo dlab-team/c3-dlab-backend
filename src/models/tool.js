@@ -3,7 +3,9 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Tool extends Model {
     static associate(models) {
-      Tool.hasMany(models.ToolLevel);
+      Tool.hasMany(models.ToolLevel, {
+        onDelete: "CASCADE",
+      });
     }
   }
   Tool.init(

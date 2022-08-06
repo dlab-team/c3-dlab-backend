@@ -1,42 +1,50 @@
-'use strict';
+"use strict";
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('WorkExperiences', {
+    await queryInterface.createTable("WorkExperiences", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       urlCv: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       urlLinkedin: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       urlGithub: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       urlPortfolio: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       details: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       yearsExperience: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+      },
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "id",
+          as: "userId",
+        },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('WorkExperiences');
-  }
+    await queryInterface.dropTable("WorkExperiences");
+  },
 };

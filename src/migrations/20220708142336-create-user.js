@@ -38,6 +38,14 @@ module.exports = {
       idealJob: {
         type: Sequelize.TEXT,
       },
+      EducationLevelId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "EducationLevels",
+          key: "id",
+          as: "educationLevelId",
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

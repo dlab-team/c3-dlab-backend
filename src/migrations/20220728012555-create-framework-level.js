@@ -1,27 +1,43 @@
-'use strict';
+"use strict";
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('FrameworkLevels', {
+    await queryInterface.createTable("FrameworkLevels", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       level: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+      },
+      FrameworkId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Frameworks",
+          key: "id",
+          as: "frameworkId",
+        },
+      },
+      UserId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "id",
+          as: "userId",
+        },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('FrameworkLevels');
-  }
+    await queryInterface.dropTable("FrameworkLevels");
+  },
 };

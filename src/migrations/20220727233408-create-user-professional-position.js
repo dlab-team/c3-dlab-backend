@@ -8,7 +8,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-
+      ProfessionalPositionId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "ProfessionalPositions",
+          key: "id",
+          as: "professionalPosition",
+        },
+      },
+      UserId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Users",
+          key: "id",
+          as: "userId",
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
