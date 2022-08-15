@@ -1,8 +1,12 @@
 const {
   EducationLevel,
+  Framework,
   FrameworkLevel,
+  Language,
   LanguageLevel,
+  ProfessionalPosition,
   Study,
+  Tool,
   ToolLevel,
   User,
   UserProfessionalPosition,
@@ -80,6 +84,20 @@ const profileControllers = {
     });
 
     res.json({ user });
+  },
+  getFormInfo: async (req, res) => {
+    const edLevels = await EducationLevel.findAll({
+      attributes: ["id", "name"],
+    });
+    const frameworks = await Framework.findAll({ attributes: ["id", "name"] });
+    const languages = await Language.findAll({ attributes: ["id", "name"] });
+    const professionalPositions = await ProfessionalPosition.findAll({
+      attributes: ["id", "name"],
+    });
+    const tools = await Tool.findAll({ attributes: ["id", "name"] });
+    res.status(200).json({
+      res: { edLevels, frameworks, languages, professionalPositions, tools },
+    });
   },
 };
 
