@@ -110,9 +110,9 @@
  *              positions: [{UserId: 1, ProfessionalPositionId: 1}]
  *              languages: [{UserId: 1, LanguageId: 1, level: 1}]
  *              frameworks: [{UserId: 1, FrameworkId: 1, level: 1}]
- *              tools: [{UserId: 1, FrameworkId: 1, level: 1}]
+ *              tools: [{UserId: 1, ToolId: 1, level: 1}]
  * @swagger
- * /api/v1/users/profile:
+ * /api/1/users/profile:
  *  post:
  *      summary: Creates the user`s profile
  *      requestBody:

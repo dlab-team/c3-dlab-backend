@@ -91,10 +91,11 @@ const profileControllers = {
     });
     const frameworks = await Framework.findAll({ attributes: ["id", "name"] });
     const languages = await Language.findAll({ attributes: ["id", "name"] });
+    const tools = await Tool.findAll({ attributes: ["id", "name"] });
     const professionalPositions = await ProfessionalPosition.findAll({
       attributes: ["id", "name"],
     });
-    const tools = await Tool.findAll({ attributes: ["id", "name"] });
+
     res.status(200).json({
       res: { edLevels, frameworks, languages, professionalPositions, tools },
     });
