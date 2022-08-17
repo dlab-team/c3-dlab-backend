@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       UserProfessionalPosition.belongsTo(models.ProfessionalPosition, {
         foreignKey: "ProfessionalPositionId",
-        as: "Position",
+        //as: "Position",
       });
       UserProfessionalPosition.belongsTo(models.User, {
         foreignKey: "UserId",

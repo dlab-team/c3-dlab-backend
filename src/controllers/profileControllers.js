@@ -42,37 +42,43 @@ const profileControllers = {
       where: { id: userId },
     });
     if (userExists) {
-      const user = await User.update(
-        {
-          name: name,
-          lastName: lastName,
-          phone: phone,
-          city: city,
-          country: country,
-          gender: gender,
-          EducationLevelId: educationLevelId,
-          employmentStatus: employmentStatus,
-          idealJob: idealJob,
-        },
-        { where: { id: userId } }
-      );
-      await WorkExperience.create({
-        UserId: userId,
-        urlCv: urlCv,
-        urlLinkedin: urlLinkedin,
-        urlGithub: urlGithub,
-        urlPortfolio: urlPortfolio,
-        details: details,
-        yearsExperience: yearsExperience,
-      });
+      try {
+        const user = await User.update(
+          {
+            name: name,
+            lastName: lastName,
+            phone: phone,
+            city: city,
+            country: country,
+            gender: gender,
+            EducationLevelId: educationLevelId,
+            employmentStatus: employmentStatus,
+            idealJob: idealJob,
+          },
+          { where: { id: userId } }
+        );
+        await WorkExperience.create({
+          UserId: userId,
+          urlCv: urlCv,
+          urlLinkedin: urlLinkedin,
+          urlGithub: urlGithub,
+          urlPortfolio: urlPortfolio,
+          details: details,
+          yearsExperience: yearsExperience,
+        });
 
-      await Study.bulkCreate(studies);
-      await UserProfessionalPosition.bulkCreate(positions);
-      await LanguageLevel.bulkCreate(languages);
-      await FrameworkLevel.bulkCreate(frameworks);
-      await ToolLevel.bulkCreate(tools);
+        await Study.bulkCreate(studies);
+        await UserProfessionalPosition.bulkCreate(positions);
+        await LanguageLevel.bulkCreate(languages);
+        await FrameworkLevel.bulkCreate(frameworks);
+        await ToolLevel.bulkCreate(tools);
 
-      await res.json({ user });
+        res.status(200).json({ succes: true, message: "Profile updated" });
+      } catch (error) {
+        res.json(error);
+      }
+    } else {
+      res.status(400).json({ succes: false });
     }
   },
   getUser: async (req, res) => {
@@ -80,10 +86,57 @@ const profileControllers = {
 
     const user = await User.findAll({
       where: { id: userId },
-      include: { all: true, nested: true },
+      //include: { all: true, nested: true },
+      include: [
+        { model: WorkExperience },
+        {
+          model: Study,
+          attributes: ["id", "name", "institution", "institutionType"],
+        },
+        {
+          model: UserProfessionalPosition,
+          attributes: ["ProfessionalPositionId"],
+          include: {
+            model: ProfessionalPosition,
+            //as: "Position",
+            attributes: ["name"],
+          },
+        },
+        {
+          model: LanguageLevel,
+          attributes: ["LanguageId", "level"],
+          include: { model: Language, attributes: ["name"] },
+        },
+        {
+          model: FrameworkLevel,
+          attributes: ["FrameworkId", "level"],
+          include: { model: Framework, attributes: ["name"] },
+        },
+        {
+          model: ToolLevel,
+          attributes: ["ToolId", "level"],
+          include: { model: Tool, attributes: ["name"] },
+        },
+      ],
+      attributes: [
+        "id",
+        "email",
+        "name",
+        "lastName",
+        "phone",
+        "city",
+        "country",
+        "gender",
+        "employmentStatus",
+        "idealJob",
+        "EducationLevelId",
+      ],
     });
-
-    res.json({ user });
+    if (user) {
+      res.status(200).json({ succes: true, res: user });
+    } else {
+      res.status(400).json({ succer: false, message: "User was not found" });
+    }
   },
   getFormInfo: async (req, res) => {
     const edLevels = await EducationLevel.findAll({

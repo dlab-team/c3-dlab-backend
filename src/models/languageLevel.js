@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       LanguageLevel.belongsTo(models.Language, {
         foreignKey: "LanguageId",
-        as: "Language",
+        //as: "Language",
       });
       LanguageLevel.belongsTo(models.User, {
         foreignKey: "UserId",

@@ -112,8 +112,8 @@
  *              frameworks: [{UserId: 1, FrameworkId: 1, level: 1}]
  *              tools: [{UserId: 1, ToolId: 1, level: 1}]
  * @swagger
- * /api/1/users/profile:
- *  post:
+ * /api/1/profile/adduser:
+ *  put:
  *      summary: Creates the user`s profile
  *      requestBody:
  *          content:
@@ -219,4 +219,131 @@
  *          400:
  *              description: bad request
  *
+ * /api/1/profile/getuser:
+ *  post:
+ *      summary: Retrieves user's data
+ *      requestBody:
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          userId:
+ *                              type: integer
+ *      responses:
+ *          200:
+ *              description: user profile data
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              id:
+ *                                  type: integer
+ *                              email:
+ *                                  type: string
+ *                              name:
+ *                                  type: string
+ *                              lastName:
+ *                                  type: string
+ *                              phone:
+ *                                  type: string
+ *                              city:
+ *                                  type: string
+ *                              country:
+ *                                  type: string
+ *                              gender:
+ *                                  type: string
+ *                              employmentStatus:
+ *                                  type: string
+ *                              idealJob:
+ *                                  type: string
+ *                              EducationLevelId:
+ *                                  type: integer
+ *                              WorkExperience:
+ *                                  type: object
+ *                                  properties:
+ *                                      id:
+ *                                          type: integer
+ *                                      urlCv:
+ *                                          type: string
+ *                                      urlLinkedin:
+ *                                          type: string
+ *                                      urlGithub:
+ *                                          type: string
+ *                                      urlPortfolio:
+ *                                          type: string
+ *                                      details:
+ *                                          type: string
+ *                                      yearsExperience:
+ *                                          type: integer
+ *                                      userId:
+ *                                          type: integer
+ *                              Studies:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          id:
+ *                                              type: integer
+ *                                          name:
+ *                                              type: string
+ *                                          institution:
+ *                                              type: string
+ *                                          institutionType:
+ *                                              type: string
+ *                              UserProfessionalPositions:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          ProfessionalPositionId:
+ *                                              type: integer
+ *                                          ProfessionalPosition:
+ *                                              type: object
+ *                                              properties:
+ *                                                  name:
+ *                                                      type: string
+ *                              LanguageLevels:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          LanguageId:
+ *                                              type: integer
+ *                                          level:
+ *                                              type: integer
+ *                                          Language:
+ *                                              type: object
+ *                                              properties:
+ *                                                  name:
+ *                                                      type: string
+ *                              FrameworkLevels:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          FrameworkId:
+ *                                              type: integer
+ *                                          level:
+ *                                              type: integer
+ *                                          Framework:
+ *                                              type: object
+ *                                              properties:
+ *                                                  name:
+ *                                                      type: string
+ *                              ToolLevels:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          ToolId:
+ *                                              type: integer
+ *                                          level:
+ *                                              type: integer
+ *                                          Tool:
+ *                                              type: object
+ *                                              properties:
+ *                                                  name:
+ *                                                      type: string
  */
