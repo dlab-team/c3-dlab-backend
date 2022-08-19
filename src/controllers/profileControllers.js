@@ -85,7 +85,7 @@ const profileControllers = {
         await UserSoftSkill.bulkCreate(softSkills);
         await UserVisa.bulkCreate(visas);
 
-        res.status(200).json({ succes: true, message: "Profile updated" });
+        res.status(200).json({ success: true, message: "Profile updated" });
       } catch (error) {
         res.json(error);
       }
