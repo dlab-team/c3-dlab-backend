@@ -90,7 +90,7 @@ const profileControllers = {
         res.json(error);
       }
     } else {
-      res.status(400).json({ succes: false });
+      res.status(400).json({ success: false });
     }
   },
   getUser: async (req, res) => {
