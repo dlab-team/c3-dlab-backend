@@ -50,6 +50,33 @@
  *                              type: integer
  *                          name:
  *                              type: string
+ *              jobs:
+ *                  type: array
+ *                  items:
+ *                      type: object
+ *                      properties:
+ *                          id:
+ *                              type: integer
+ *                          name:
+ *                              type: string
+ *              softSkills:
+ *                  type: array
+ *                  items:
+ *                      type: object
+ *                      properties:
+ *                          id:
+ *                              type: integer
+ *                          name:
+ *                              type: string
+ *              visas:
+ *                  type: array
+ *                  items:
+ *                      type: object
+ *                      properties:
+ *                          id:
+ *                              type: integer
+ *                          name:
+ *                              type: string
  * @swagger
  * /api/1/profile/form:
  *  get:
@@ -99,6 +126,33 @@
  *                                          name:
  *                                              type: string
  *                              professionalPositions:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          id:
+ *                                              type: integer
+ *                                          name:
+ *                                              type: string
+ *                              jobs:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          id:
+ *                                              type: integer
+ *                                          name:
+ *                                              type: string
+ *                              softSkills:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          id:
+ *                                              type: integer
+ *                                          name:
+ *                                              type: string
+ *                              visas:
  *                                  type: array
  *                                  items:
  *                                      type: object

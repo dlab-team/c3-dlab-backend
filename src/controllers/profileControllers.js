@@ -2,14 +2,20 @@ const {
   EducationLevel,
   Framework,
   FrameworkLevel,
+  Job,
   Language,
   LanguageLevel,
   ProfessionalPosition,
+  SoftSkill,
   Study,
   Tool,
   ToolLevel,
   User,
+  UserJob,
   UserProfessionalPosition,
+  UserSoftSkill,
+  UserVisa,
+  Visa,
   WorkExperience,
 } = require("../models");
 
@@ -37,6 +43,9 @@ const profileControllers = {
       languages,
       frameworks,
       tools,
+      visas,
+      jobs,
+      softSkills,
     } = req.body;
     const userExists = await User.findOne({
       where: { id: userId },
@@ -72,6 +81,9 @@ const profileControllers = {
         await LanguageLevel.bulkCreate(languages);
         await FrameworkLevel.bulkCreate(frameworks);
         await ToolLevel.bulkCreate(tools);
+        await UserJob.bulkCreate(jobs);
+        await UserSoftSkill.bulkCreate(softSkills);
+        await UserVisa.bulkCreate(visas);
 
         res.status(200).json({ succes: true, message: "Profile updated" });
       } catch (error) {
@@ -117,6 +129,21 @@ const profileControllers = {
           attributes: ["ToolId", "level"],
           include: { model: Tool, attributes: ["name"] },
         },
+        {
+          model: UserJob,
+          attributes: ["JobId", "UserId"],
+          include: { model: Job, attributes: ["name"] },
+        },
+        {
+          model: UserSoftSkill,
+          attributes: ["SoftSkillId", "UserId"],
+          include: { model: SoftSkill, attributes: ["name"] },
+        },
+        {
+          model: UserVisa,
+          attributes: ["VisaId", "UserId"],
+          include: { model: Visa, attributes: ["name"] },
+        },
       ],
       attributes: [
         "id",
@@ -148,9 +175,22 @@ const profileControllers = {
     const professionalPositions = await ProfessionalPosition.findAll({
       attributes: ["id", "name"],
     });
+    const jobs = await Job.findAll({ attributes: ["id", "name"] });
+    const softSkills = await SoftSkill.findAll({ attributes: ["id", "name"] });
+    const visas = await Visa.findAll({ attributes: ["id", "name"] });
 
     res.status(200).json({
-      res: { edLevels, frameworks, languages, professionalPositions, tools },
+      succes: true,
+      res: {
+        edLevels,
+        frameworks,
+        languages,
+        professionalPositions,
+        tools,
+        jobs,
+        softSkills,
+        visas,
+      },
     });
   },
 };

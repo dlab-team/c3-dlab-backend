@@ -89,6 +89,33 @@
  *                              type: integer
  *                          level:
  *                              type: integer
+ *              jobs:
+ *                  type: array
+ *                  items:
+ *                      type: object
+ *                      properties:
+ *                          UserId:
+ *                              type: integer
+ *                          JobId:
+ *                              type: integer
+ *              softSkills:
+ *                  type: array
+ *                  items:
+ *                      type: object
+ *                      properties:
+ *                          UserId:
+ *                              type: integer
+ *                          SoftSkillId:
+ *                              type: integer
+ *              visas:
+ *                  type: array
+ *                  items:
+ *                      type: object
+ *                      properties:
+ *                          UserId:
+ *                              type: integer
+ *                          VisaId:
+ *                              type: integer
  *          example:
  *              userId: 1
  *              name: Max
@@ -108,9 +135,13 @@
  *              yearsExperience: 0
  *              studies: [{UserId: 1, name: Fullstack Mern, institution: Desafio Latam, institutionType: Bootcamp}]
  *              positions: [{UserId: 1, ProfessionalPositionId: 1}]
- *              languages: [{UserId: 1, LanguageId: 1, level: 1}]
+ *              languages: [{UserId: 1, LanguageId: 1, level: 1},{UserId: 1, LanguageId: 4, level: 3}]
  *              frameworks: [{UserId: 1, FrameworkId: 1, level: 1}]
  *              tools: [{UserId: 1, ToolId: 1, level: 1}]
+ *              jobs: [{UserId: 1, JobId: 1}]
+ *              softSkills: [{UserId: 1, SoftSkillId: 1}]
+ *              visas: [{UserId: 1, VisaId: 1}]
+ *
  * @swagger
  * /api/1/profile/adduser:
  *  put:
@@ -215,6 +246,33 @@
  *                                          ToolId:
  *                                              type: integer
  *                                          level:
+ *                                              type: integer
+ *                              jobs:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          UserId:
+ *                                              type: integer
+ *                                          JobId:
+ *                                              type: integer
+ *                              softSkills:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          UserId:
+ *                                              type: integer
+ *                                          SoftSkillId:
+ *                                              type: integer
+ *                              visas:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          UserId:
+ *                                              type: integer
+ *                                          VisaId:
  *                                              type: integer
  *          400:
  *              description: bad request
@@ -342,6 +400,48 @@
  *                                          level:
  *                                              type: integer
  *                                          Tool:
+ *                                              type: object
+ *                                              properties:
+ *                                                  name:
+ *                                                      type: string
+ *                              UserJobs:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          JobId:
+ *                                              type: integer
+ *                                          UserId:
+ *                                              type: integer
+ *                                          Job:
+ *                                              type: object
+ *                                              properties:
+ *                                                  name:
+ *                                                      type: string
+ *                              UserSoftSkills:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          SoftSkillId:
+ *                                              type: integer
+ *                                          UserId:
+ *                                              type: integer
+ *                                          SoftSkill:
+ *                                              type: object
+ *                                              properties:
+ *                                                  name:
+ *                                                      type: string
+ *                              UserVisas:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          VisaId:
+ *                                              type: integer
+ *                                          UserId:
+ *                                              type: integer
+ *                                          Visa:
  *                                              type: object
  *                                              properties:
  *                                                  name:
