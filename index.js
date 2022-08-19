@@ -8,6 +8,7 @@ const swaggerJSDoc = require("swagger-jsdoc");
 const { sequelize } = require("./src/models/index");
 
 const userRoutes = require("./src/routes/userRoutes");
+const profileRoutes = require("./src/routes/profileRoutes");
 
 const app = express();
 
@@ -52,7 +53,7 @@ app.use(
   })
 );
 
-app.use("/api/1", userRoutes);
+app.use("/api/1", userRoutes, profileRoutes);
 app.use(
   "/api/1/documentation",
   swaggerUi.serve,

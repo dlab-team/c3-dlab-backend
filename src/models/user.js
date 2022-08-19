@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.LanguageLevel);
       User.hasMany(models.FrameworkLevel);
       User.hasMany(models.ToolLevel);
+      User.hasMany(models.UserJob);
+      User.hasMany(models.UserSoftSkill);
+      User.hasMany(models.UserVisa);
       User.belongsTo(models.EducationLevel, {
         foreignKey: "EducationLevelId",
         as: "Education level",

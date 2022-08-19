@@ -21,7 +21,7 @@
 
 /**
  * @swagger
- * /api/v1/users/signup:
+ * /api/1/users/signup:
  *  post:
  *      summary: Creates a new user
  *      requestBody:
@@ -46,7 +46,7 @@
  *          400:
  *              description: bad request
  *
- * /api/v1/users/signin:
+ * /api/1/users/signin:
  *  post:
  *      summary: User authentication
  *      requestBody:
@@ -71,11 +71,11 @@
  *          400:
  *              description: Bad request
  *
- * /api/users/v1/signout:
+ * /api/users/1/signout:
  *  post:
  *      summary: User signout
  *
- * /api/users/v1/currentuser:
+ * /api/users/1/currentuser:
  *  get:
  *      summary: check for cookie session
  */
