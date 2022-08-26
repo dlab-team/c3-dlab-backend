@@ -14,11 +14,21 @@ module.exports = {
       notes: {
         type: Sequelize.TEXT
       },
-      userId: {
-        type: Sequelize.INTEGER
+      UserId: {
+        type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
+        references: {
+          model: "Users",
+          key: "id",
+        },
       },
-      showTheCodeId: {
-        type: Sequelize.INTEGER
+      ShowTheCodeId: {
+        type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
+        references: {
+          model: "ShowTheCodes",
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,
