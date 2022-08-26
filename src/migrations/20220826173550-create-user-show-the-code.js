@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       status: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       notes: {
         type: Sequelize.TEXT
