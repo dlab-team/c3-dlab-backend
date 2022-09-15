@@ -160,9 +160,9 @@ const profileControllers = {
       ],
     });
     if (user) {
-      res.status(200).json({ succes: true, res: user });
+      res.status(200).json({ success: true, res: user });
     } else {
-      res.status(400).json({ succer: false, message: "User was not found" });
+      res.status(400).json({ success: false, message: "User was not found" });
     }
   },
   getFormInfo: async (req, res) => {
