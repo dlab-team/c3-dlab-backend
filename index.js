@@ -17,7 +17,11 @@ if (process.env.NODE_ENV === "development") {
   require("dotenv").config();
 }
 
-app.use(cors());
+app.use(cors({
+  credentials: true,
+  origin: process.env.ORIGIN,
+  exposedHeaders: ['session'],
+}));
 
 const swaggerSpec = {
   definition: {
@@ -49,7 +53,7 @@ app.use(express.json());
 
 app.use(
   cookieSession({
-    signed: false,
+    signed: false, sameSite: true, domain: ''
   })
 );
 

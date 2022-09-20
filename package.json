@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "migrate": "sequelize-cli db:migrate --config src/config/config.js --migrations-path src/migrations",
-    "migrate-prod": "heroku run sequelize-cli db:migrate --config src/config/config.js --migrations-path src/migrations"
+    "migrate-prod": "heroku run sequelize-cli db:migrate --config src/config/config.js --migrations-path src/migrations",
+    "seed":"docker-compose run app npx sequelize-cli db:seed:all --config src/config/config.js --seeders-path src/seeders"
   },
   "repository": {
     "type": "git",
