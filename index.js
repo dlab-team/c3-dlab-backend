@@ -19,8 +19,8 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(cors({
   credentials: true,
-  origin: 'http://localhost:3000',
-  exposedHeaders: ['Set-Cookie', 'session', 'jwt'],
+  origin: process.env.ORIGIN,
+  exposedHeaders: ['session'],
 }));
 
 const swaggerSpec = {
