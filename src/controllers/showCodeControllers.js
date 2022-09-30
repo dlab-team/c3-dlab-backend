@@ -13,7 +13,7 @@ const showCodeControllers = {
       ],
     });
     if (userShows.length !== 0) {
-      res.status(200).json({ succes: true, res: userShows });
+      res.status(200).json({ success: true, res: userShows });
     } else {
       res.status(204).json({});
     }
