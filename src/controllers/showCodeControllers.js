@@ -22,6 +22,17 @@ const showCodeControllers = {
     const shows = await ShowTheCode.findAll();
     res.status(200).json({ succes: true, res: shows });
   },
+  acceptInvitation: async (req, res) => {
+    const { userId, showCodeId } = req.body;
+
+    const userShow = await UserShowTheCode.update(
+      {
+        status: true,
+      },
+      { where: { ShowTheCodeId: showCodeId } }
+    );
+    res.json({ userId });
+  },
 };
 
 module.exports = showCodeControllers;
