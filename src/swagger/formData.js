@@ -77,6 +77,33 @@
  *                              type: integer
  *                          name:
  *                              type: string
+ *              englishLevels:
+ *                  type: array
+ *                  items:
+ *                      type: object
+ *                      properties:
+ *                          id:
+ *                              type: integer
+ *                          name:
+ *                              type: string
+ *              currentSituations:
+ *                  type: array
+ *                  items:
+ *                      type: object
+ *                      properties:
+ *                          id:
+ *                              type: integer
+ *                          name:
+ *                              type: string
+ *              betterSituations:
+ *                  type: array
+ *                  items:
+ *                      type: object
+ *                      properties:
+ *                          id:
+ *                              type: integer
+ *                          name:
+ *                              type: string
  * @swagger
  * /api/1/profile/form:
  *  get:

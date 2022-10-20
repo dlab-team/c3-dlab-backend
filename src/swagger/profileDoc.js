@@ -141,6 +141,9 @@
  *              jobs: [{UserId: 1, JobId: 1}]
  *              softSkills: [{UserId: 1, SoftSkillId: 1}]
  *              visas: [{UserId: 1, VisaId: 1}]
+ *              englishLevel: [{UserId: 1, EnglishLevelId: 1}]
+ *              currentSituation: [{UserId: 1, CurrentSituationId: 1}]
+ *              betterSituation: [{UserId: 1, BetterSituationId: 1}]
  *
  * @swagger
  * /api/1/profile/adduser:
@@ -273,6 +276,33 @@
  *                                          UserId:
  *                                              type: integer
  *                                          VisaId:
+ *                                              type: integer
+ *                              EnglishLevel:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          UserId:
+ *                                              type: integer
+ *                                          EnglishLevelId:
+ *                                              type: integer
+ *                              CurrentSituation:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          UserId:
+ *                                              type: integer
+ *                                          CurrentSituationId:
+ *                                              type: integer
+ *                              BetterSituation:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          UserId:
+ *                                              type: integer
+ *                                          BetterSituationId:
  *                                              type: integer
  *          400:
  *              description: bad request

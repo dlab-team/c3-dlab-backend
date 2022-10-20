@@ -71,11 +71,11 @@
  *          400:
  *              description: Bad request
  *
- * /api/users/1/signout:
+ * /api/1/users/signout:
  *  post:
  *      summary: User signout
  *
- * /api/users/1/currentuser:
+ * /api/1/users/currentuser:
  *  get:
  *      summary: check for cookie session
  */

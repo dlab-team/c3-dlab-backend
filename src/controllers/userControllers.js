@@ -20,6 +20,12 @@ const {
   UserVisa,
   Visa,
   WorkExperience,
+  EnglishLevel,
+  UserEnglishLevel,
+  CurrentSituation,
+  UserCurrentSituation,
+  BetterSituation,
+  UserBetterSituation,
 } = require("../models");
 
 const userControllers = {
@@ -104,6 +110,21 @@ const userControllers = {
           attributes: ["VisaId", "UserId"],
           include: { model: Visa, attributes: ["name"] },
         },
+        {
+          model: UserEnglishLevel,
+          attributes: ["EnglishLevelId", "UserId"],
+          include: { model: EnglishLevel, attributes: ["name"] },
+        },
+        {
+          model: UserCurrentSituation,
+          attributes: ["CurrentSituationId", "UserId"],
+          include: { model: CurrentSituation, attributes: ["name"] },
+        },
+        {
+          model: UserBetterSituation,
+          attributes: ["BetterSituation", "UserId"],
+          include: { model: BetterSituation, attributes: ["name"] },
+        },
       ],
       attributes: [
         "id",
@@ -118,6 +139,7 @@ const userControllers = {
         "employmentStatus",
         "idealJob",
         "EducationLevelId",
+        "skill",
       ],
     });
 
@@ -205,6 +227,21 @@ const userControllers = {
             attributes: ["VisaId", "UserId"],
             include: { model: Visa, attributes: ["name"] },
           },
+          {
+            model: UserEnglishLevel,
+            attributes: ["EnglishLevelId", "UserId"],
+            include: { model: EnglishLevel, attributes: ["name"] },
+          },
+          {
+            model: UserCurrentSituation,
+            attributes: ["CurrentSituationId", "UserId"],
+            include: { model: CurrentSituation, attributes: ["name"] },
+          },
+          {
+            model: UserBetterSituation,
+            attributes: ["BetterSituation", "UserId"],
+            include: { model: BetterSituation, attributes: ["name"] },
+          },
         ],
         attributes: [
           "id",
@@ -218,6 +255,7 @@ const userControllers = {
           "employmentStatus",
           "idealJob",
           "EducationLevelId",
+          "skill",
         ],
       });
       res.status(200).json({ succes: true, res: user });
