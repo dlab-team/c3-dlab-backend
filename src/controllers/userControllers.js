@@ -122,7 +122,7 @@ const userControllers = {
         },
         {
           model: UserBetterSituation,
-          attributes: ["BetterSituation", "UserId"],
+          attributes: ["BetterSituationId", "UserId"],
           include: { model: BetterSituation, attributes: ["name"] },
         },
       ],

@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "EducationLevelId",
         as: "Education level",
       });
+      User.hasMany(models.UserEnglishLevel);
+      User.hasMany(models.UserCurrentSituation);
+      User.hasMany(models.UserBetterSituation);
     }
   }
   User.init(
@@ -31,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       gender: DataTypes.STRING,
       employmentStatus: DataTypes.STRING,
       idealJob: DataTypes.TEXT,
+      skill: DataTypes.TEXT,
     },
     {
       sequelize,
