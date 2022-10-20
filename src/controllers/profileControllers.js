@@ -17,6 +17,12 @@ const {
   UserVisa,
   Visa,
   WorkExperience,
+  EnglishLevel,
+  UserEnglishLevel,
+  CurrentSituation,
+  UserCurrentSituation,
+  BetterSituation,
+  UserBetterSituation,
 } = require("../models");
 
 const profileControllers = {
@@ -46,6 +52,10 @@ const profileControllers = {
       visas,
       jobs,
       softSkills,
+      skill,
+      englishLevel,
+      currentSituation,
+      betterSituation,
     } = req.body;
     const userExists = await User.findOne({
       where: { id: userId },
@@ -63,6 +73,7 @@ const profileControllers = {
             EducationLevelId: educationLevelId,
             employmentStatus: employmentStatus,
             idealJob: idealJob,
+            skill: skill,
           },
           { where: { id: userId } }
         );
@@ -84,7 +95,9 @@ const profileControllers = {
         await UserJob.bulkCreate(jobs);
         await UserSoftSkill.bulkCreate(softSkills);
         await UserVisa.bulkCreate(visas);
-
+        await UserEnglishLevel.bulkCreate(englishLevel);
+        await UserBetterSituation.bulkCreate(betterSituation);
+        await UserCurrentSituation.bulkCreate(currentSituation);
         res.status(200).json({ success: true, message: "Profile updated" });
       } catch (error) {
         res.json(error);
@@ -144,6 +157,21 @@ const profileControllers = {
           attributes: ["VisaId", "UserId"],
           include: { model: Visa, attributes: ["name"] },
         },
+        {
+          model: UserEnglishLevel,
+          attributes: ["EnglishLevelId", "UserId"],
+          include: { model: EnglishLevel, attributes: ["name"] },
+        },
+        {
+          model: UserCurrentSituation,
+          attributes: ["CurrentSituationId", "UserId"],
+          include: { model: CurrentSituation, attributes: ["name"] },
+        },
+        {
+          model: UserBetterSituation,
+          attributes: ["BetterSituation", "UserId"],
+          include: { model: BetterSituation, attributes: ["name"] },
+        },
       ],
       attributes: [
         "id",
@@ -157,12 +185,13 @@ const profileControllers = {
         "employmentStatus",
         "idealJob",
         "EducationLevelId",
+        "skill",
       ],
     });
     if (user) {
-      res.status(200).json({ succes: true, res: user });
+      res.status(200).json({ success: true, res: user });
     } else {
-      res.status(400).json({ succer: false, message: "User was not found" });
+      res.status(400).json({ success: false, message: "User was not found" });
     }
   },
   getFormInfo: async (req, res) => {
@@ -178,6 +207,15 @@ const profileControllers = {
     const jobs = await Job.findAll({ attributes: ["id", "name"] });
     const softSkills = await SoftSkill.findAll({ attributes: ["id", "name"] });
     const visas = await Visa.findAll({ attributes: ["id", "name"] });
+    const englishLevels = await EnglishLevel.findAll({
+      attributes: ["id", "name"],
+    });
+    const currentSituations = await CurrentSituation.findAll({
+      attributes: ["id", "name"],
+    });
+    const betterSituations = await BetterSituation.findAll({
+      attributes: ["id", "name"],
+    });
 
     res.status(200).json({
       succes: true,
@@ -190,6 +228,9 @@ const profileControllers = {
         jobs,
         softSkills,
         visas,
+        englishLevels,
+        currentSituations,
+        betterSituations,
       },
     });
   },

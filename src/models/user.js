@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.UserJob);
       User.hasMany(models.UserSoftSkill);
       User.hasMany(models.UserVisa);
+      User.hasMany(models.UserShowTheCode);
       User.belongsTo(models.EducationLevel, {
         foreignKey: "EducationLevelId",
         as: "Education level",

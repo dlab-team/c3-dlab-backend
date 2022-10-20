@@ -1,7 +1,32 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const { User } = require("../models");
+const {
+  EducationLevel,
+  Framework,
+  FrameworkLevel,
+  Job,
+  Language,
+  LanguageLevel,
+  ProfessionalPosition,
+  SoftSkill,
+  Study,
+  Tool,
+  ToolLevel,
+  User,
+  UserJob,
+  UserProfessionalPosition,
+  UserSoftSkill,
+  UserVisa,
+  Visa,
+  WorkExperience,
+  EnglishLevel,
+  UserEnglishLevel,
+  CurrentSituation,
+  UserCurrentSituation,
+  BetterSituation,
+  UserBetterSituation,
+} = require("../models");
 
 const userControllers = {
   signUp: async (req, res) => {
@@ -40,6 +65,82 @@ const userControllers = {
     const { email, password } = req.body;
     const existingUser = await User.findOne({
       where: { email: email },
+      include: [
+        { model: WorkExperience },
+        {
+          model: Study,
+          attributes: ["id", "name", "institution", "institutionType"],
+        },
+        {
+          model: UserProfessionalPosition,
+          attributes: ["ProfessionalPositionId"],
+          include: {
+            model: ProfessionalPosition,
+            //as: "Position",
+            attributes: ["name"],
+          },
+        },
+        {
+          model: LanguageLevel,
+          attributes: ["LanguageId", "level"],
+          include: { model: Language, attributes: ["name"] },
+        },
+        {
+          model: FrameworkLevel,
+          attributes: ["FrameworkId", "level"],
+          include: { model: Framework, attributes: ["name"] },
+        },
+        {
+          model: ToolLevel,
+          attributes: ["ToolId", "level"],
+          include: { model: Tool, attributes: ["name"] },
+        },
+        {
+          model: UserJob,
+          attributes: ["JobId", "UserId"],
+          include: { model: Job, attributes: ["name"] },
+        },
+        {
+          model: UserSoftSkill,
+          attributes: ["SoftSkillId", "UserId"],
+          include: { model: SoftSkill, attributes: ["name"] },
+        },
+        {
+          model: UserVisa,
+          attributes: ["VisaId", "UserId"],
+          include: { model: Visa, attributes: ["name"] },
+        },
+        {
+          model: UserEnglishLevel,
+          attributes: ["EnglishLevelId", "UserId"],
+          include: { model: EnglishLevel, attributes: ["name"] },
+        },
+        {
+          model: UserCurrentSituation,
+          attributes: ["CurrentSituationId", "UserId"],
+          include: { model: CurrentSituation, attributes: ["name"] },
+        },
+        {
+          model: UserBetterSituation,
+          attributes: ["BetterSituation", "UserId"],
+          include: { model: BetterSituation, attributes: ["name"] },
+        },
+      ],
+      attributes: [
+        "id",
+        "email",
+        "password",
+        "name",
+        "lastName",
+        "phone",
+        "city",
+        "country",
+        "gender",
+        "employmentStatus",
+        "idealJob",
+        "EducationLevelId",
+        "skill",
+      ],
     });
 
     if (existingUser) {
@@ -61,7 +162,8 @@ const userControllers = {
         req.session.jwt = userJwt;
         res.status(200).json({
           success: true,
-          res: { email: existingUser.email, id: existingUser.id },
+          //res: { email: existingUser.email, id: existingUser.id },
+          res: { existingUser },
         });
       } else {
         res
@@ -78,7 +180,85 @@ const userControllers = {
     }
     try {
       const payload = jwt.verify(req.session.jwt, process.env.JWT_KEY);
-      res.send({ currentUser: payload });
+      const user = await User.findOne({
+        where: { id: payload.id },
+        include: [
+          { model: WorkExperience },
+          {
+            model: Study,
+            attributes: ["id", "name", "institution", "institutionType"],
+          },
+          {
+            model: UserProfessionalPosition,
+            attributes: ["ProfessionalPositionId"],
+            include: {
+              model: ProfessionalPosition,
+              //as: "Position",
+              attributes: ["name"],
+            },
+          },
+          {
+            model: LanguageLevel,
+            attributes: ["LanguageId", "level"],
+            include: { model: Language, attributes: ["name"] },
+          },
+          {
+            model: FrameworkLevel,
+            attributes: ["FrameworkId", "level"],
+            include: { model: Framework, attributes: ["name"] },
+          },
+          {
+            model: ToolLevel,
+            attributes: ["ToolId", "level"],
+            include: { model: Tool, attributes: ["name"] },
+          },
+          {
+            model: UserJob,
+            attributes: ["JobId", "UserId"],
+            include: { model: Job, attributes: ["name"] },
+          },
+          {
+            model: UserSoftSkill,
+            attributes: ["SoftSkillId", "UserId"],
+            include: { model: SoftSkill, attributes: ["name"] },
+          },
+          {
+            model: UserVisa,
+            attributes: ["VisaId", "UserId"],
+            include: { model: Visa, attributes: ["name"] },
+          },
+          {
+            model: UserEnglishLevel,
+            attributes: ["EnglishLevelId", "UserId"],
+            include: { model: EnglishLevel, attributes: ["name"] },
+          },
+          {
+            model: UserCurrentSituation,
+            attributes: ["CurrentSituationId", "UserId"],
+            include: { model: CurrentSituation, attributes: ["name"] },
+          },
+          {
+            model: UserBetterSituation,
+            attributes: ["BetterSituation", "UserId"],
+            include: { model: BetterSituation, attributes: ["name"] },
+          },
+        ],
+        attributes: [
+          "id",
+          "email",
+          "name",
+          "lastName",
+          "phone",
+          "city",
+          "country",
+          "gender",
+          "employmentStatus",
+          "idealJob",
+          "EducationLevelId",
+          "skill",
+        ],
+      });
+      res.status(200).json({ succes: true, res: user });
     } catch (err) {
       res.send({ currentUser: null });
     }
