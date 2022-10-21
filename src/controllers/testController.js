@@ -13,7 +13,7 @@ const testController = {
       ],
     });
     if (userTests.length !== 0) {
-      res.status(200).json({ succes: true, res: userShows });
+      res.status(200).json({ succes: true, res: userTests });
     } else {
       res.status(204).json({});
     }
