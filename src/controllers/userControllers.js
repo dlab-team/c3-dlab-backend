@@ -163,7 +163,7 @@ const userControllers = {
         res.status(200).json({
           success: true,
           //res: { email: existingUser.email, id: existingUser.id },
-          res: { existingUser },
+          res: existingUser,
         });
       } else {
         res
