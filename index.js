@@ -10,6 +10,7 @@ const { sequelize } = require("./src/models/index");
 const userRoutes = require("./src/routes/userRoutes");
 const profileRoutes = require("./src/routes/profileRoutes");
 const showCodeRoutes = require("./src/routes/showCodeRoutes");
+const testRoutes = require("./src/routes/testRoutes");
 
 const app = express();
 
@@ -18,11 +19,13 @@ if (process.env.NODE_ENV === "development") {
   require("dotenv").config();
 }
 
-app.use(cors({
-  credentials: true,
-  origin: process.env.ORIGIN,
-  exposedHeaders: ['session'],
-}));
+app.use(
+  cors({
+    credentials: true,
+    origin: process.env.ORIGIN,
+    exposedHeaders: ["session"],
+  })
+);
 
 const swaggerSpec = {
   definition: {
@@ -54,11 +57,13 @@ app.use(express.json());
 
 app.use(
   cookieSession({
-    signed: false, sameSite: true, domain: ''
+    signed: false,
+    sameSite: true,
+    domain: "",
   })
 );
 
-app.use("/api/1", userRoutes, profileRoutes, showCodeRoutes);
+app.use("/api/1", userRoutes, profileRoutes, showCodeRoutes, testRoutes);
 app.use(
   "/api/1/documentation",
   swaggerUi.serve,

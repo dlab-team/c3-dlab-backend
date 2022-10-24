@@ -6,7 +6,7 @@ module.exports = {
       {
         status: false,
         notes: "notas",
-        UserId: 100,
+        UserId: 1,
         ShowTheCodeId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),

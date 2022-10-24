@@ -11,6 +11,8 @@ module.exports = {
         difficulty: "fácil",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML",
         logo: "https://www.freepnglogos.com/uploads/html5-logo-png/html5-logo-html-logo-0.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "languages",
@@ -20,6 +22,8 @@ module.exports = {
         difficulty: "medio",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=CSS",
         logo: "https://seeklogo.com/images/C/css-3-logo-023C1A7171-seeklogo.com.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "languages",
@@ -29,6 +33,8 @@ module.exports = {
         difficulty: "difícil",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS",
         logo: "https://thumbs.dreamstime.com/b/javascript-logo-javascript-logo-white-background-vector-format-available-136765881.jpg",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "frameworks",
@@ -38,6 +44,8 @@ module.exports = {
         difficulty: "fácil",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=SQL",
         logo: "https://thumbs.dreamstime.com/b/sql-database-icon-logo-design-ui-ux-app-orange-inscription-shadow-96841969.jpg",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "frameworks",
@@ -47,6 +55,8 @@ module.exports = {
         difficulty: "medio",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=MySQL",
         logo: "https://1000logos.net/wp-content/uploads/2020/08/MySQL-Logo.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "languages",
@@ -56,6 +66,8 @@ module.exports = {
         difficulty: "difícil",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=PYTHON",
         logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "languages",
@@ -65,6 +77,8 @@ module.exports = {
         difficulty: "fácil",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=PHP",
         logo: "https://cdn.freebiesupply.com/logos/large/2x/php-1-logo-svg-vector.svg",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "frameworks",
@@ -74,6 +88,8 @@ module.exports = {
         difficulty: "medio",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=JQUERY",
         logo: "https://seeklogo.com/images/J/jquery-logo-CFE6ECE363-seeklogo.com.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "frameworks",
@@ -83,6 +99,8 @@ module.exports = {
         difficulty: "difícil",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=BOOTSTRAP",
         logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/512px-Bootstrap_logo.svg.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "frameworks",
@@ -92,6 +110,8 @@ module.exports = {
         difficulty: "fácil",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=REACT",
         logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "languages",
@@ -101,6 +121,8 @@ module.exports = {
         difficulty: "medio",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=JAVA",
         logo: "https://cdn-icons-png.flaticon.com/512/226/226777.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "languages",
@@ -110,6 +132,8 @@ module.exports = {
         difficulty: "difícil",
         link: "https://www.w3schools.com/quiztest/quiztest.php?qtest=C",
         logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/695px-C_Programming_Language.svg.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "languages",
@@ -119,6 +143,8 @@ module.exports = {
         difficulty: "fácil",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=CPP",
         logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "languages",
@@ -128,6 +154,8 @@ module.exports = {
         difficulty: "medio",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=CS",
         logo: "https://cis.msjc.edu/Tutorials/Programming/Languages/Csharp/images/Csharp_logo.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "languages",
@@ -137,6 +165,8 @@ module.exports = {
         difficulty: "difícil",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=R",
         logo: "https://air-marketing-assets.imgix.net/blog/logo-db/r-logo/r-logo-svg-4.svg",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "languages",
@@ -146,6 +176,8 @@ module.exports = {
         difficulty: "fácil",
         link: "https://www.w3schools.com/quiztest/quiztest.php?qtest=KOTLIN",
         logo: "https://download.logo.wine/logo/Kotlin_(programming_language)/Kotlin_(programming_language)-Logo.wine.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "tools",
@@ -155,6 +187,8 @@ module.exports = {
         difficulty: "medio",
         link: "https://www.w3schools.com/quiztest/quiztest.asp?qtest=GIT",
         logo: "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "languages",
@@ -164,6 +198,8 @@ module.exports = {
         difficulty: "difícil",
         link: "https://www.w3schools.com/quiztest/quiztest.php?qtest=TS",
         logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         category: "tools",
@@ -173,6 +209,8 @@ module.exports = {
         difficulty: "fácil",
         link: "https://www.w3schools.com/quiztest/quiztest.php?qtest=AWSCE",
         logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png",
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
     ]);
   },
