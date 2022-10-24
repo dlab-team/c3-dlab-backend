@@ -13,11 +13,7 @@ const testController = {
       ],
     });
     if (userTests.length !== 0) {
-<<<<<<< HEAD
       res.status(200).json({ succes: true, res: userTests });
-=======
-      res.status(200).json({ succes: true, res: userShows });
->>>>>>> 785b9ff (tests)
     } else {
       res.status(204).json({});
     }
