@@ -1,7 +1,7 @@
 const { Test, UserTest } = require("../models");
 
 const testController = {
-  getUsertests: async (req, res) => {
+  getUserTests: async (req, res) => {
     const { userId } = req.body;
 
     const userTests = await UserTest.findAll({
@@ -12,7 +12,7 @@ const testController = {
         },
       ],
     });
-    if (userTests.length !== 0) {
+    if (userTests) {
       res.status(200).json({ succes: true, res: userTests });
     } else {
       res.status(204).json({});
