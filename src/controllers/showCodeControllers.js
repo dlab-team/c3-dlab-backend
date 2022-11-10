@@ -13,7 +13,7 @@ const showCodeControllers = {
       ],
     });
     if (userShows.length !== 0) {
-      res.status(200).json({ succes: true, res: userShows });
+      res.status(200).json({ success: true, res: userShows });
     } else {
       res.status(204).json({});
     }
@@ -21,6 +21,17 @@ const showCodeControllers = {
   getShows: async (req, res) => {
     const shows = await ShowTheCode.findAll();
     res.status(200).json({ succes: true, res: shows });
+  },
+  acceptInvitation: async (req, res) => {
+    const { userId, showCodeId } = req.body;
+
+    const userShow = await UserShowTheCode.update(
+      {
+        status: true,
+      },
+      { where: { ShowTheCodeId: showCodeId } }
+    );
+    res.json({ userId });
   },
 };
 
